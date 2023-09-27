@@ -1,5 +1,7 @@
 # SQLite
 
+## db파일 연결 및 table 생
+
 >data = sqlite3.connect("파일")
 
 db파일을 연결하는 함수이다. 만약 마지막에 data.commit()를 안하려면 파일 명 뒤에 isolation_level = Nobe 을 추가한다.    
@@ -31,17 +33,36 @@ data.close()
 <div markdown="1">
 
 ```python
-/* Sleeps for approximately TICKS timer ticks.  Interrupts must
-   be turned on. */
-void
-timer_sleep (int64_t ticks) 
-{
-  int64_t start = timer_ticks ();
+def create() -> None:
+    '''
+        create() connects a database named |titanic.db| and creates a table |Company| in it.
 
-  ASSERT (intr_get_level () == INTR_ON);
-  while (timer_elapsed (start) < ticks) 
-    thread_yield ();
-}
+        Columns and data types of table |Company| are as follow:
+            |Employee|   - string
+            |Department| - string
+            |Salary|     - int
+            |Gender|     - string
+        
+        The order of data insertion does not matter.
+    '''
+    # BEGIN_YOUR_CODE
+    
+    data = sqlite3.connect("titanic.db")
+    cur = data.cursor()
+    cur.execute("create table if not exists Company(Employee text, Department text, Salary integer, Gender text)")
+    input_list = [('John', 'sales', 5000, 'M'), 
+            ('Allen', 'accounting', 6000, 'M'), 
+            ('Martin', 'research', 3500, 'M'), 
+            ('Mary', 'sales', 5500, 'F'), 
+            ('Smith', 'research', 4500, 'M')]
+    cur.executemany("insert into Company (Employee, Department, Salary, Gender) values(?,?,?,?)", input_list)
+    data.commit()
+    cur.close()
+    data.close()
+    
+    # END_YOUR_CODE
+    
+create()
 ```
 
 </div>
