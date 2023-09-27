@@ -67,3 +67,59 @@ create()
 
 </div>
 </details>  
+
+## table fetch
+
+>cur.execute("select * from 이름")
+
+table 모든 내용 선택
+
+>cur.fetchall()
+
+모든 내용 fetch
+
+>cur.execute("select * from 이름 where ~ order by ~")
+
+where문은 조건을 추가한다.  
+만약 조건이 여러개라면 and를 추가한다.  
+order by는 뒤에 column 이름을 쓴다. 오름차순이면 이름만, 내림차순이면 desc  
+
+<details>
+<summary> problem 1 </summary>
+<div markdown="1">
+
+```python
+def select2() -> List[Tuple[int, str, int, int]]:
+    '''
+        select2() fetches all data satisfying certain condition from table |Titatic| in database |titanic.db|
+            and returns them as a list of tuples.
+
+        Columns and data types of table |Titanic| are as follow:
+            |Pclass|   - int
+            |Name|     - string
+            |Survived| - int
+            |Age|      - int
+        
+        The returned list should be formatted as follow:
+            [ Tuple_1, ..., Tuple_N ]
+            where N is # of fetched data and
+            Tuple_n = ( |Pclass|, |Name|, |Survived|, |Age| ), |Survived| == 1, |Age| < 65
+            for 1 <= n <= N.
+
+        The tuples should be arranged in ascending order of |Age|.
+        The order of tuples with the same |Age| does not matter.
+    '''
+    # BEGIN_YOUR_CODE
+    
+    data = sqlite3.connect("titanic.db")
+    cur = data.cursor()
+    cur.execute("select * from Titanic where Survived == 1 and Age < 65 order by Age")
+    return (cur.fetchall())
+
+    # END_YOUR_CODE
+
+select2()
+```
+
+</div>
+</details> 
