@@ -25,3 +25,24 @@ cur.close()
 data.close()
 
 마무리 할 때 추가하자. 
+
+<details>
+<summary> problem 1 </summary>
+<div markdown="1">
+
+```python
+/* Sleeps for approximately TICKS timer ticks.  Interrupts must
+   be turned on. */
+void
+timer_sleep (int64_t ticks) 
+{
+  int64_t start = timer_ticks ();
+
+  ASSERT (intr_get_level () == INTR_ON);
+  while (timer_elapsed (start) < ticks) 
+    thread_yield ();
+}
+```
+
+</div>
+</details>  
