@@ -29,7 +29,7 @@ data.close()
 마무리 할 때 추가하자. 
 
 <details>
-<summary> problem 1 </summary>
+<summary> problem 1.a </summary>
 <div markdown="1">
 
 ```python
@@ -85,7 +85,7 @@ where문은 조건을 추가한다.
 order by는 뒤에 column 이름을 쓴다. 오름차순이면 이름만, 내림차순이면 desc  
 
 <details>
-<summary> problem 1 </summary>
+<summary> problem 1.c </summary>
 <div markdown="1">
 
 ```python
