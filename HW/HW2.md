@@ -151,3 +151,33 @@ cur.execute("select * from Company left outer join Titanic on Company.Employee =
 </div>
 </details> 
 
+## SQLite and Pandas
+
+>pd.read_sql("select * from 이름", data, index_col = None)
+
+table(database)를 dataframe으로 바꿔주는 함수이다.  
+
+>df.to_sql('이름', data)
+
+dataframe을 database로 바꿔주는 함수이다.
+
+<details>
+<summary> problem 2 </summary>
+<div markdown="1">
+
+```python
+
+#db to df
+data = sqlite3.connect("titanic.db")
+df = pd.read_sql("select * from Titanic", data, index_col = None)
+df.to_csv("titanic.csv")
+
+#df to db
+df = pd.read_csv("titanic2.csv", index_col = 0)  
+data = sqlite3.connect("titanic.db")
+df.to_sql('Titanic2', data)
+
+```
+
+</div>
+</details> 
