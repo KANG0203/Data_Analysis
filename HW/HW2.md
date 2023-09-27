@@ -123,3 +123,31 @@ select2()
 
 </div>
 </details> 
+
+>cur.execute("select ... form 이름 group by ...")
+
+group by를 하려면 마지막에 원하는 column을 적어준다.  
+원하는 column만 select하고 싶으면 select 다음에 원하는 column을 적는다.  
+평균 값을 가져오고 싶으면 avg(column)을 이용한다.  
+
+>cur.execute("select * from 이름 (left/right/full) outer join 이름 on 조건")
+
+join하는 방법이다.  
+inner join을 하려면 그냥 join만 적어줘도 된다.  
+outer join을 하려면 원하는 방향을 적고 outer join을 적는다.  
+on 뒤에는 원하는 조건을 적는다.  
+
+<details>
+<summary> problem 1.d,e ex </summary>
+<div markdown="1">
+
+```python
+
+cur.execute("select Pclass, avg(Age) from Titanic group by Pclass")
+cur.execute("select * from Company left outer join Titanic on Company.Employee == Titanic.Name")
+
+```
+
+</div>
+</details> 
+
