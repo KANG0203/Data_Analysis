@@ -1,6 +1,6 @@
 # SQLite
 
-## db파일 연결 및 table 생
+## db파일 연결 및 table 생성
 
 >data = sqlite3.connect("파일")
 
