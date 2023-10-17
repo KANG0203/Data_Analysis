@@ -1,6 +1,6 @@
 ## SQL exercise
 
-1. select country, branch, sum(accounts) from Bank group by country, branch
+1. select country, branch, num(accounts) from Bank group by country, branch
 2. select country, sum(balance) from Bank group by country order by sum(balance) DESC
 
 이 부분은 시험 전에 은이랑 맞춰보자.  
